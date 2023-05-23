@@ -1,0 +1,49 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: movinglightspeed-movinglightspeed-poi-map-app-dev
+  annotations:
+    argocd/app-name: movinglightspeed-movinglightspeed-poi-map-app-dev
+    backstage.io/kubernetes-id: movinglightspeed-movinglightspeed-poi-map-app-dev
+    backstage.io/kubernetes-namespace: movinglightspeed
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/instance=movinglightspeed-movinglightspeed-poi-map-app-dev'
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: Summit23Janus1/movinglightspeed-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.summit23rock.n26o.p1.openshiftapps.com/dev-pipelines/ns/movinglightspeed/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.summit23rock.n26o.p1.openshiftapps.com/k8s/ns/movinglightspeed/deployments/movinglightspeed-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.summit23rock.n26o.p1.openshiftapps.com/#https://github.com/Summit23Janus1/movinglightspeed-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://movinglightspeed-poi-map-app-movinglightspeed.apps.summit23rock.n26o.p1.openshiftapps.com
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/movinglightspeed"
+  system: workshop-system-movinglightspeed
+  consumesApis:
+    - gateway-api-movinglightspeed
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-movinglightspeed
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:default/movinglightspeed"
